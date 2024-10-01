@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 const NavBar = () => {
     return <>
      <Navbar expand="lg" className="bg-body-tertiary">

@@ -1,0 +1,16 @@
+.card:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+
+.btn-perso{
+    background-color: rgb(223, 19, 53);
+    
+}
+
+.navbar{
+    background-color: pink !important;
+}
