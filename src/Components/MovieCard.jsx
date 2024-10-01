@@ -5,10 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const MovieCard = ({ movieCard }) => {
     const navigate=useNavigate();
 
-    const navitageTo=(id)=>{
+    const navigateTo=(id)=>{
         navigate("/movie/"+id);
     }
-
 
     return <>
         <Card style={{ width: '15 rem' }} onClick={()=> {navigateTo(movieCard.id)}}>
