@@ -1,7 +1,15 @@
+body{
+    background: pink
+    url(jeunesaucine3.webp);
+    background-size: cover;
+}
+
 .card:hover{
-    transform: scale(1.1);
     cursor: pointer;
+    background: rgb(182, 255, 253);
     z-index: 1;
+    box-shadow: 10px 10px 10px 10px rgb(103, 10, 112) ;
+    
 }
 
 
@@ -12,5 +20,8 @@
 }
 
 .navbar{
-    background-color: pink !important;
+    background-color: rgb(208, 53, 78) !important;
+    font-size: larger;
+
+    
 }

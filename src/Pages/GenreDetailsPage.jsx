@@ -1,40 +1,47 @@
-import { Container } from "react-bootstrap";
-import MovieCard from "../Components/MovieCard";
-import MoviesService from "../Services/MoviesService";
+import { Await, useParams } from "react-router-dom";
+import { Button, Container, Pagination } from "react-bootstrap";
+import GenreService from "../Services/GenreService";
 import { useEffect, useState } from "react";
-import Pagination from 'react-bootstrap/Pagination';
+import MovieCard from "../Components/MovieCard";
 
 
-const HomePage = () => {
-    const [movies, setMovies] = useState([]);
+const GenreDetailsPage = () => {
+    const {id}=useParams();
+
+    const [movies, setMovies]=useState({})
     const [currentPage, setCurrentPage] = useState(1);
     const [maxPage, setMaxPage] = useState(500);
 
-    const fetchMovies = async () => {
-        try {
-            const response = await MoviesService.getAllMovies(currentPage);
-            // setMaxPage(response.data.total_pages);
-
-            setMovies(response.data.results);
-
-        } catch (error) {
-            console.log(error);
-        }
+    const fetchGetMoviesByGenreID=async ()=>{  
+       try{
+        const response=await GenreService.getMoviesByGenreID(1, id)
+    console.log(response)
+    
+       } catch (error){
+        console.log(error)
+       }
     }
-    useEffect(() => {
-        fetchMovies();
-    }, [currentPage])
-    // 
 
-    return <Container className="d-flex flex-column align-items-center mt-3">
-    <h1>Page d'accueil</h1>
-    <div  className="d-flex justify-content-center flex-wrap gap-4 my-5">
-        {movies.map((movie) => {
-            return <div style={{ width: '23%' }}><MovieCard movieCard={movie} key={movie.id}></MovieCard>
-</div>
+    useEffect(()=>{
+        fetchGetMoviesByGenreID();
+    }, [currentPage])
+        
+  
+    return <>
+    
+    <h1>movies Genre {id}</h1>
+    <p>{id.genres}</p>
+
+    <div className="d-flex justify-content-center gap-3">
+            {id.genres && id.genres.map((id) => {
+                
             })}
         </div>
-        <Pagination className="mt-5">
+
+
+
+
+    <Pagination className="mt-5">
             {currentPage > 1 && <>
                 <Pagination.First onClick={() => { setCurrentPage(1) }} />
                 <Pagination.Prev onClick={() => { setCurrentPage(currentPage - 1) }} />
@@ -68,7 +75,8 @@ const HomePage = () => {
             </>}
         </Pagination>
 
-    </Container>;
+    
+    </>;
 }
-
-export default HomePage;
+ 
+export default GenreDetailsPage;
