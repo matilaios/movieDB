@@ -30,3 +30,12 @@ body{
 
     background: 2px lightblue;
 }
+
+h1{
+    display: flex;
+    justify-content: center;
+    color: rgb(218, 14, 116);
+    
+}
+
+

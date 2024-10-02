@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MoviesService from "../Services/MoviesService";
 import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
@@ -6,6 +6,10 @@ import { Button, Container } from "react-bootstrap";
 const MovieDetailsPage = () => {
     const {id} = useParams();
     const [movie, setMovie] = useState({});
+    const navigate = useNavigate();
+    const navigateTo=(genre)=>{
+        navigate("/genres/"+genre.id,{state : {"genre" : genre}});
+    }
 
     const fetchMovieByID = async () => {
         try {
@@ -27,9 +31,12 @@ const MovieDetailsPage = () => {
     <p>Pays d'origine : {movie.origin_country}</p>
         <div className="d-flex justify-content-center gap-3">
             {movie.genres && movie.genres.map((genre) => {
-                return <Button className="btn-perso" key={genre.id} size="lg">{genre.name}</Button>
+                return <Button className="btn-perso" key={genre.id} size="lg" 
+                onClick={() => { navigateTo(genre)}}>{genre.name}</Button>
+                
+
             })}
-            
+        
         </div>
         
         <img style={{ width: '23%' }} className="mt-3" src={"https://image.tmdb.org/t/p/original"+movie.poster_path}/>
