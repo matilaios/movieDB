@@ -1,4 +1,4 @@
-import { Await, useParams } from "react-router-dom";
+import { Await, useLocation, useParams } from "react-router-dom";
 import { Button, Container, Pagination } from "react-bootstrap";
 import GenreService from "../Services/GenreService";
 import { useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import MovieCard from "../Components/MovieCard";
 
 const GenreDetailsPage = () => {
     const {id}=useParams();
+    const location=useLocation();
     const [movies, setMovies]=useState([]);
     
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,10 +32,10 @@ const GenreDetailsPage = () => {
         fetchGetMoviesByGenreID();
     }, [currentPage])
         
-  
+  console.log(location);
     return <>
     
-    <h1>movies Genre {id}</h1>
+    <h1>{location.state.genre.name}</h1>
     
     <div  className="d-flex justify-content-center flex-wrap gap-4 my-5">
         {movies.map((movie) => {MovieCard

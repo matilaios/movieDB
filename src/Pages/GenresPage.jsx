@@ -8,8 +8,8 @@ const GenresPage = () => {
     const [genres, setGenres] = useState([]);
     const navigate=useNavigate();
 
-    const navigateTo=(id)=>{
-        navigate("/genres/"+id);
+    const navigateTo=(genre)=>{
+        navigate("/genres/"+genre.id,{state : {"genre" : genre}});
     }
 
     const fetchGenres = async () => {
@@ -31,7 +31,7 @@ const GenresPage = () => {
         <div className="d-flex justify-content-center flex-wrap gap-3">
             {genres.map((genre) => {
                 return <Button className="btn-perso" size="lg" key={genre.id} 
-                onClick={() => { navigateTo(genre.id)}}>{genre.name}</Button>
+                onClick={() => { navigateTo(genre)}}>{genre.name}</Button>
             })}
         </div>
     </Container>;

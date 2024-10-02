@@ -29,9 +29,11 @@ const MovieDetailsPage = () => {
             {movie.genres && movie.genres.map((genre) => {
                 return <Button className="btn-perso" key={genre.id} size="lg">{genre.name}</Button>
             })}
+            
         </div>
+        
         <img style={{ width: '23%' }} className="mt-3" src={"https://image.tmdb.org/t/p/original"+movie.poster_path}/>
-        <p className="d-flex mt-5">Résumé : {movie.resume}</p>
+        <p className="resume">{movie.overview}</p>
     </Container>;
 }
  

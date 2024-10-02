@@ -16,6 +16,11 @@ const HomePage = () => {
             // setMaxPage(response.data.total_pages);
 
             setMovies(response.data.results);
+            
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+        
+            },10)   
 
         } catch (error) {
             console.log(error);
