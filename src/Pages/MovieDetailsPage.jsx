@@ -30,7 +30,7 @@ const MovieDetailsPage = () => {
     <p>Budget : {movie.budget}$</p>
     <p>Pays d'origine : {movie.origin_country}</p>
         <div className="d-flex justify-content-center gap-3">
-            {movie.genres && movie.genres.map((genre) => {
+        {movie.genres && movie.genres.map((genre) => {
                 return <Button className="btn-perso" key={genre.id} size="lg" 
                 onClick={() => { navigateTo(genre)}}>{genre.name}</Button>
                 

@@ -27,14 +27,24 @@ body{
 }
 
 .resume{
-
+    display: flex;
+    align-items: center;
     background: 2px lightblue;
+    margin-top: 5px;
+    width: 1000px;
 }
 
 h1{
     display: flex;
     justify-content: center;
     color: rgb(218, 14, 116);
+    
+}
+
+.pagePeople{
+
+    display: flex;
+    justify-content: center;
     
 }
 
