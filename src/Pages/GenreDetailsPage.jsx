@@ -7,15 +7,20 @@ import MovieCard from "../Components/MovieCard";
 
 const GenreDetailsPage = () => {
     const {id}=useParams();
-
-    const [movies, setMovies]=useState({})
+    const [movies, setMovies]=useState([]);
+    
     const [currentPage, setCurrentPage] = useState(1);
     const [maxPage, setMaxPage] = useState(500);
 
     const fetchGetMoviesByGenreID=async ()=>{  
        try{
-        const response=await GenreService.getMoviesByGenreID(1, id)
-    console.log(response)
+        const response=await GenreService.getMoviesByGenreID(currentPage, id)
+    setMovies(response.data.results)
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+
+    },10)
+
     
        } catch (error){
         console.log(error)
@@ -30,18 +35,17 @@ const GenreDetailsPage = () => {
     return <>
     
     <h1>movies Genre {id}</h1>
-    <p>{id.genres}</p>
+    
+    <div  className="d-flex justify-content-center flex-wrap gap-4 my-5">
+        {movies.map((movie) => {MovieCard
+            return <div style={{ width: '16%' }}><MovieCard movieCard={movie} key={movie.id}></MovieCard> </div>
+        })}
+       
+</div>
+        
 
-    <div className="d-flex justify-content-center gap-3">
-            {id.genres && id.genres.map((id) => {
-                
-            })}
-        </div>
 
-
-
-
-    <Pagination className="mt-5">
+    <Pagination className="d'flex justify-content-center mt-5">
             {currentPage > 1 && <>
                 <Pagination.First onClick={() => { setCurrentPage(1) }} />
                 <Pagination.Prev onClick={() => { setCurrentPage(currentPage - 1) }} />

@@ -31,6 +31,7 @@ const MovieDetailsPage = () => {
             })}
         </div>
         <img style={{ width: '23%' }} className="mt-3" src={"https://image.tmdb.org/t/p/original"+movie.poster_path}/>
+        <p className="d-flex mt-5">Résumé : {movie.resume}</p>
     </Container>;
 }
  
