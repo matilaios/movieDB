@@ -7,6 +7,7 @@ import GenresPage from './Pages/GenresPage';
 import NavBar from './Components/NavBar';
 import MovieDetailsPage from './Pages/MovieDetailsPage';
 import GenreDetailsPage from './Pages/GenreDetailsPage';
+import PeoplePage from './Pages/PeoplePage';
 
 function App() {
   
@@ -20,7 +21,7 @@ function App() {
     <Route path='/Genres' element={<GenresPage/>}/>
     <Route path='/movie/:id' element={<MovieDetailsPage/>}/>
     <Route path='Genres/:id' element={<GenreDetailsPage/>}/>
-    
+    <Route path='/People' element={<PeoplePage/>}/>
 
   </Routes>
 

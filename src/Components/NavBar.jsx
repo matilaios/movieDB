@@ -18,8 +18,11 @@ const NavBar = () => {
         
                 <Link to={'/Genres'}>Genres</Link>
                 
+                <Link to={'/People'}>Acteurs</Link>
+                
             
           </Nav>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
