@@ -16,8 +16,8 @@ const PeopleDetailPage =  () => {
     const navigateTo=(genre)=>{
         navigate("/PeopleDetail/"+movie.id,{state : {"movie" : movie}});
     }
-    
-    
+    //await promise promesse de réponse. le console log va attendre que le await soit terminé pour s'afficher
+    //pour faire appel a une API, utiliser try and catch
 
 const fetchPeopleByID = async () => {
 try {const response = await PeopleService.getAllPeopleDetail(id, currentPage);
@@ -27,6 +27,9 @@ try {const response = await PeopleService.getAllPeopleDetail(id, currentPage);
     console.log(error);
 }
 }
+
+//une fois la constante fetchpeople by id : on fait le useSate/setPeople
+
 useEffect(() => {
     fetchPeopleByID();
    
