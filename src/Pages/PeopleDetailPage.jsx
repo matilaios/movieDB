@@ -7,11 +7,11 @@ import { Pagination } from "react-bootstrap";
 
 
 const PeopleDetailPage =  () => {
-    const {id} = useParams();
+    const {id} =  useParams();
     const [people, setPeople] = useState({});
     const [movie, setMovie]= useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [maxPage, setMaxPage] = useState(500);
+    const [maxPage, setMaxPage] = useState(20);
     const navigate = useNavigate();
     const navigateTo=(genre)=>{
         navigate("/PeopleDetail/"+movie.id,{state : {"movie" : movie}});
@@ -35,14 +35,16 @@ useEffect(() => {
    
 }, [])
 
+
 useEffect(()=>{
     fetchMovieByPeople();
 },[currentPage])
 
 const fetchMovieByPeople=async ()=>{
-    try {const response = await PeopleService.getAllMovieByPeople(id);
+    try {const response = await PeopleService.getAllMovieByPeople(id, currentPage);
         console.log(response.data)
         setMovie(response.data.results)
+        setMaxPage(response.data.total_pages);
         
     } catch (error) {
         console.log(error);
