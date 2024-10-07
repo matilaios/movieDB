@@ -1,14 +1,16 @@
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import MovieCard from "../Components/MovieCard";
 import MoviesService from "../Services/MoviesService";
 import { useEffect, useState } from "react";
 import Pagination from 'react-bootstrap/Pagination';
+import Form from 'react-bootstrap/Form'
 
 
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [maxPage, setMaxPage] = useState(500);
+    const [searchValue, setSearchValue]=useState('');
 
     const fetchMovies = async () => {
         try {
@@ -33,6 +35,29 @@ const HomePage = () => {
 
     return <Container className="d-flex flex-column align-items-center mt-3">
     <h1>Page d'accueil</h1>
+
+<div>
+<Form>
+      
+        <Form.Label htmlFpr="search">Chercher un film</Form.Label>
+        <Form.Control
+        type="text"
+        id="search"
+        aria-describedby="searc"
+        placeholder="ex:DeaPool"
+        className="mb-3"
+        value={searchValue}
+        onChange={(e)=> {
+            console.log(e);
+        }}
+        
+        />
+       <Button variant="primary" className="col-12 mb-3">Rechercher</Button>
+     
+    </Form>
+</div>
+
+
     <div  className="d-flex justify-content-center flex-wrap gap-4 my-5">
         {movies.map((movie) => {
             return <div style={{ width: '23%' }}><MovieCard movieCard={movie} key={movie.id}></MovieCard>
