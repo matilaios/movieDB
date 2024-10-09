@@ -8,7 +8,7 @@ import NavBar from './Components/NavBar';
 import MovieDetailsPage from './Pages/MovieDetailsPage';
 import GenreDetailsPage from './Pages/GenreDetailsPage';
 import PeoplePage from './Pages/PeoplePage';
-import PeopleDetailPage from './Pages/peopleDetailPage';
+import PeopleDetailPage from './Pages/peopleDetailsPage';
 
 function App() {
   
